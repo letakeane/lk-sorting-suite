@@ -1,82 +1,63 @@
 require('locus')
 
+import newPositiveNumbers from '../scripts/newPositiveNumbers'
+import newPosNegNumbers from '../scripts/newPosNegNumbers'
+import randomLettersArray from '../scripts/randomLettersArray'
 import {assert} from 'chai'
 import insertionSort from '../scripts/insertionSort.js'
 
 describe('insertion sort tests', () => {
+  let raddestArray = [];
+
   it('should be a function', () => {
     assert.isFunction(insertionSort);
   })
 
-  it.skip('should sort an array of 2 values', () => {
-    let raddestArray = [2, 1];
+  it('should sort an array of 2 values', () => {
+    raddestArray = [2, 1];
 
     insertionSort(raddestArray);
+
     assert.deepEqual(raddestArray, [1, 2]);
   })
 
-  it.skip('should sort a set of positive integers into numeric order', () => {
-    let raddestArray = [];
+  it('should sort a set of positive integers into numeric order', () => {
+    raddestArray = [];
 
-    const newNumbers = arr => {
-      for ( let i = 0; i < 20; i++ ) {
-        arr[i] = parseInt ( Math.floor ( Math.random() * 10 ) )
-      }
-    }
+    newPositiveNumbers(raddestArray);
 
-    newNumbers(raddestArray);
+    raddestArray.unshift(200);
+    raddestArray.push(0);
 
     insertionSort(raddestArray);
-    assert.deepEqual(raddestArray, raddestArray.sort())
+
+    assert.deepEqual(raddestArray[raddestArray.length - 1], 200);
+    assert.deepEqual(raddestArray[0], 0);
   })
 
-  it.skip('should sort a set of +/- integers into numeric order', () => {
-    let raddestArray = [];
+  it('should sort a set of +/- integers into numeric order', () => {
+    raddestArray = [];
 
-    const newNumbers = arr => {
-      for ( let i = 0; i < 21; i++ ) {
-        arr[i] = parseInt (
-          Math.floor (
-            Math.random() * (10 - (-10)) + (-10)
-          )
-        )
-      }
-    }
-
-    newNumbers(raddestArray);
+    newPosNegNumbers(raddestArray);
+    raddestArray.unshift(200);
+    raddestArray.push(-200);
 
     insertionSort(raddestArray);
-    assert.deepEqual(raddestArray, raddestArray.sort())
+
+    assert.deepEqual(raddestArray[0], -200)
+    assert.deepEqual(raddestArray[raddestArray.length - 1], 200);
   })
 
-  it.skip('should sort a set of letters into order', () => {
-    let raddestArray = [];
-    let letters = "abcdefghijklmnopqrstuvwxyz";
-
-    const randomLettersArray = array => {
-      for (let i = 0; i < 21; i++) {
-        array[i] = letters.charAt(Math.floor(Math.random() * letters.length));
-      }
-    }
+  it('should sort a set of letters into order', () => {
+    raddestArray = [];
 
     randomLettersArray(raddestArray);
+    raddestArray.unshift('z');
+    raddestArray.push('a');
+
     insertionSort(raddestArray);
-    assert.deepEqual(raddestArray, raddestArray.sort())
-  })
 
-  it.skip('should sort a set of letters and numbers into order', () => {
-    let raddestArray = [];
-    let alphanums = "0123456789abcdefghijklmnopqrstuvwxyz";
-
-    const randomLettersArray = array => {
-      for (let i = 0; i < 21; i++) {
-        array[i] =
-        alphanums.charAt(Math.floor(Math.random() * alphanums.length));
-      }
-    }
-
-    randomLettersArray(raddestArray);
-    insertionSort(raddestArray);
-    assert.deepEqual(raddestArray, raddestArray.sort())
+    assert.deepEqual(raddestArray[0], 'a')
+    assert.deepEqual(raddestArray[raddestArray.length - 1], 'z');
   })
 })
