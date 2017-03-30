@@ -7,7 +7,7 @@ import {assert} from 'chai'
 import bubbleSort from '../scripts/bubbleSort.js'
 
 describe('bubble sort tests', () => {
-  let raddestArray = [];
+  var raddestArray = [];
 
   it('should be a function', () => {
     assert.isFunction(bubbleSort);

@@ -7,7 +7,7 @@ import {assert} from 'chai'
 import insertionSort from '../scripts/insertionSort.js'
 
 describe('insertion sort tests', () => {
-  let raddestArray = [];
+  var raddestArray = [];
 
   it('should be a function', () => {
     assert.isFunction(insertionSort);

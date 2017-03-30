@@ -7,8 +7,8 @@ import {assert} from 'chai'
 import mergeSort from '../scripts/mergeSort.js'
 
 describe('merge sort tests', () => {
-  let raddestArray = [];
-  let sortedArray = [];
+  var raddestArray = [];
+  var sortedArray = [];
 
   it('should be a function', () => {
     assert.isFunction(mergeSort);

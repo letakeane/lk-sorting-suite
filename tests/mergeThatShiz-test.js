@@ -4,9 +4,9 @@ import {assert} from 'chai'
 import mergeThatShiz from '../scripts/mergeThatShiz.js'
 
 describe('mergeThatShiz sort tests', () => {
-  let radArray = [];
-  let raddestArray = [];
-  let mergedArray = [];
+  var radArray = [];
+  var raddestArray = [];
+  var mergedArray = [];
 
   it('should be a function', () => {
     assert.isFunction(mergeThatShiz);
